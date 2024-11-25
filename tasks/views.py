@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from .models import *
 from .forms import *
 
+def user_login(request):
+    return render(request, 'tasks/login.html')
+
 def index(request):
     tasks = Task.objects.all()
 
