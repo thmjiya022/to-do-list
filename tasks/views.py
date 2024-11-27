@@ -14,6 +14,8 @@ def user_login(request):
     if user is not None:
         login(request, user)
         return redirect('/')
+    else:
+        messages.error(request, 'Invalid username or password')
     
     return render(request, 'tasks/login.html')
 
@@ -27,7 +29,6 @@ def index(request):
         if form.is_valid():
             form.save()
         return redirect('/')
-
 
     context = {'tasks': tasks, 'form': form}
     return render(request, 'tasks/list.html', context)
